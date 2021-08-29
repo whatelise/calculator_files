@@ -1,5 +1,4 @@
 "usestrict";
-let y = 14;
 let sum;
 
 window.addEventListener("DOMContentLoaded", clickCalculate);
@@ -24,10 +23,29 @@ function clickCalculate() {
   });
 }
 function roundNumber() {
-  console.log("roundnumber");
   const checked = document.getElementById("doround").checked;
   if (checked === true) {
+    console.log("roundnumber");
     const decimal = document.getElementById("decimals").value;
-    console.log(sum.toFixed(decimal));
+    result = sum.toFixed(decimal);
+    showResults();
+  } else {
+    result = sum;
+    console.log("not rounded " + result);
+    showResults();
   }
+}
+function showResults() {
+  console.log("showresults");
+  //   document.getElementById("results").innerHTML = result;
+  let x = document.createElement("li");
+  let t = document.createTextNode(result);
+  x.appendChild(t);
+  document.getElementById("results").appendChild(x);
+  results.scrollTop = results.scrollHeight;
+  firstnumber.value = result;
+
+  document.getElementById("clear").addEventListener("click", () => {
+    document.getElementById("results").innerHTML = "";
+  });
 }
